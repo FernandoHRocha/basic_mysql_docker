@@ -1,7 +1,24 @@
 version: '3.1'
 services:
+#BANCO DE DADOS MYSQL
   db:
-    build: db
+    build: ./db
+    restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=123
       - MYSQL_DATABASE=blog
+      - MYSQL_USER=root
+    volumes:
+      - ./db/database:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  #PHPMYADMIN PARA O BANCO DE DADOS
+  phpmyadmin:
+    build: ./phpmyadmin
+    restart: always
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=123
+    ports:
+      - "8080:80"
