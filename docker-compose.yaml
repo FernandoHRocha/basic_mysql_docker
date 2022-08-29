@@ -10,7 +10,7 @@ services:
     volumes:
       - ./db/database:/var/lib/mysql
     ports:
-      - "3304:3304"
+      - "3306:3306"
   #PHPMYADMIN PARA O BANCO DE DADOS
   phpmyadmin:
     container_name: generic_phpmyadmin
