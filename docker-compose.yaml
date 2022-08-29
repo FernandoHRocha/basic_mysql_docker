@@ -1,19 +1,19 @@
 version: '3.1'
 services:
-#BANCO DE DADOS MYSQL
+  #BANCO DE DADOS MYSQL
   db:
+    container_name: generic_database
     build: ./db
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=123
-      - MYSQL_DATABASE=blog
-      - MYSQL_USER=root
     volumes:
       - ./db/database:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "3304:3304"
   #PHPMYADMIN PARA O BANCO DE DADOS
   phpmyadmin:
+    container_name: generic_phpmyadmin
     build: ./phpmyadmin
     restart: always
     environment:
@@ -21,4 +21,6 @@ services:
       - PMA_USER=root
       - PMA_PASSWORD=123
     ports:
-      - "8080:80"
+      - "8000:80"
+    depends_on:
+      - db
