@@ -2,7 +2,7 @@ version: '3.1'
 services:
   #BANCO DE DADOS MYSQL
   db:
-    container_name: generic_database
+    container_name: database
     build: ./db
     restart: always
     environment:
@@ -13,7 +13,7 @@ services:
       - "3306:3306"
   #PHPMYADMIN PARA O BANCO DE DADOS
   phpmyadmin:
-    container_name: generic_phpmyadmin
+    container_name: pma
     build: ./phpmyadmin
     restart: always
     environment:
