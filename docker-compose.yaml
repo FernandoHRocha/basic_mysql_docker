@@ -20,7 +20,8 @@ services:
       - PMA_HOST=db
       - PMA_USER=root
       - PMA_PASSWORD=123
+      - UPLOAD_LIMIT=300M
     ports:
-      - "8000:80"
+      - "8888:80"
     depends_on:
       - db
